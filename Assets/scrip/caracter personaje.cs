@@ -10,7 +10,10 @@ public class caracterpersonaje : MonoBehaviour
     float nivelTecho             =9.68f;     //Este valor representa la parte superior de la escena
     float fuerzaSalto            = 40f;     //x veces la masa del personaje
     float Velocidad              = 3.5f;    //Este valor es de la velocidad del desplazamiento del personaje
-    
+
+
+    float limiteL = -8.40f;
+
     bool enElpiso = true;
 
     void Start()
@@ -23,7 +26,16 @@ public class caracterpersonaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.rotation.z > 0 || gameObject.transform.rotation.z < -0){
+        if (Input.GetKey("right") && gameObject.transform.position.x < limiteR)
+        {
+            gameObject.transform.Translate(Velocidad * Time.deltaTime, 0, 0);
+        }
+        else if (Input.GetKey("left") && gameObject.transform.position.x >= limiteL)
+        {
+            gameObject.transform.Translate(-Velocidad * Time.deltaTime, 0, 0);
+        }
+
+        if (gameObject.transform.rotation.z > 0 || gameObject.transform.rotation.z < -0){
             Debug.Log("ROTATION: " + gameObject.transform.rotation.z);
             gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }    
