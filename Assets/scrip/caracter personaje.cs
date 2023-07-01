@@ -12,6 +12,7 @@ public class caracterpersonaje : MonoBehaviour
     float Velocidad              = 3.5f;    //Este valor es de la velocidad del desplazamiento del personaje
 
 
+    float limiteR = 8.35f;
     float limiteL = -8.40f;
 
     bool enElpiso = true;
